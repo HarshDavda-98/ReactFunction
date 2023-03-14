@@ -23,6 +23,7 @@ import BorderColorIcon from '@mui/icons-material/BorderColor';
 import MailIcon from '@mui/icons-material/Mail';
 import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
 import PaymentIcon from '@mui/icons-material/Payment';
+import SimpleMap from './googlemap';
 
 const drawerWidth = 240;
 
@@ -136,19 +137,7 @@ export default function Dashboard() {
             </ListItem>
           ))}
         </List>
-        {/* <Divider /> */}
-        {/* <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List> */}
+      
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
@@ -166,6 +155,7 @@ export default function Dashboard() {
           consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
           sapien faucibus et molestie ac.
         </Typography>
+        <SimpleMap/>
       </Main>
     </Box>
   );
