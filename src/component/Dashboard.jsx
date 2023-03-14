@@ -16,8 +16,13 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
+import PointOfSaleSharpIcon from '@mui/icons-material/PointOfSaleSharp';
+
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import BorderColorIcon from '@mui/icons-material/BorderColor';
 import MailIcon from '@mui/icons-material/Mail';
+import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
+import PaymentIcon from '@mui/icons-material/Payment';
 
 const drawerWidth = 240;
 
@@ -68,6 +73,9 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function Dashboard() {
   const theme = useTheme();
+  const sideNav = ["Google Map Intergration","Signature canvas functionality","Email functionality","Payment Gateway integration","Download","Upi Integration"]
+  const sideNavIcon=[<LocationOnIcon/>,<BorderColorIcon/>,<MailIcon/>,<PaymentIcon/>,<DownloadForOfflineIcon/>,<PointOfSaleSharpIcon/>];
+  const sideNavLink = ["/googlemap","/signature-canvas","Email-functionality"];
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -117,19 +125,19 @@ export default function Dashboard() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          {sideNav?.map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {sideNavIcon[index]}
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItemButton>
             </ListItem>
           ))}
         </List>
-        <Divider />
-        <List>
+        {/* <Divider /> */}
+        {/* <List>
           {['All mail', 'Trash', 'Spam'].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
@@ -140,7 +148,7 @@ export default function Dashboard() {
               </ListItemButton>
             </ListItem>
           ))}
-        </List>
+        </List> */}
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
