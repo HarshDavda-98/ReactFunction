@@ -1,5 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
+import { useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -23,6 +24,7 @@ import BorderColorIcon from '@mui/icons-material/BorderColor';
 import MailIcon from '@mui/icons-material/Mail';
 import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
 import PaymentIcon from '@mui/icons-material/Payment';
+import PanToolTwoTone from '@mui/icons-material/PanToolTwoTone';
 import SimpleMap from './googlemap';
 import Routers from './Routers';
 
@@ -75,8 +77,10 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function Dashboard() {
   const theme = useTheme();
+  const params = useParams();
+  console.log(params)
   const sideNav = ["Google Map Intergration","Signature canvas functionality","Email functionality","Payment Gateway integration","Download","Upi Integration", "DragDrop"]
-  const sideNavIcon=[<LocationOnIcon/>,<BorderColorIcon/>,<MailIcon/>,<PaymentIcon/>,<DownloadForOfflineIcon/>,<PointOfSaleSharpIcon/>];
+  const sideNavIcon=[<LocationOnIcon/>,<BorderColorIcon/>,<MailIcon/>,<PaymentIcon/>,<DownloadForOfflineIcon/>,<PointOfSaleSharpIcon/>,<PanToolTwoTone/>];
   const sideNavLink = ["/googlemap","/signature-canvas","Email-functionality"];
   const [open, setOpen] = React.useState(false);
 
@@ -130,7 +134,7 @@ export default function Dashboard() {
         <List>
           {sideNav?.map((text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton>
+              <ListItemButton className='Selected'>
                 <ListItemIcon>
                   {sideNavIcon[index]}
                 </ListItemIcon>
