@@ -24,6 +24,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
 import PaymentIcon from '@mui/icons-material/Payment';
 import SimpleMap from './googlemap';
+import Routers from './Routers';
 
 const drawerWidth = 240;
 
@@ -74,7 +75,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function Dashboard() {
   const theme = useTheme();
-  const sideNav = ["Google Map Intergration","Signature canvas functionality","Email functionality","Payment Gateway integration","Download","Upi Integration"]
+  const sideNav = ["Google Map Intergration","Signature canvas functionality","Email functionality","Payment Gateway integration","Download","Upi Integration", "DragDrop"]
   const sideNavIcon=[<LocationOnIcon/>,<BorderColorIcon/>,<MailIcon/>,<PaymentIcon/>,<DownloadForOfflineIcon/>,<PointOfSaleSharpIcon/>];
   const sideNavLink = ["/googlemap","/signature-canvas","Email-functionality"];
   const [open, setOpen] = React.useState(false);
@@ -120,6 +121,7 @@ export default function Dashboard() {
         open={open}
       >
         <DrawerHeader>
+            <div style={{marginRight:"27%"}}>Hello</div>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
@@ -142,20 +144,8 @@ export default function Dashboard() {
       <Main open={open}>
         <DrawerHeader />
         <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-          enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-          imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-          Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-          Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-          nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-          leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-          feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-          consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-          sapien faucibus et molestie ac.
+            <Routers/>
         </Typography>
-        <SimpleMap/>
       </Main>
     </Box>
   );
