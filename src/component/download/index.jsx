@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function index() {
+export default function DownloadContent() {
   return (
     <div>
         <div>Download PDF</div>
