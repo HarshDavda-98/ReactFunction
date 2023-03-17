@@ -1,4 +1,5 @@
 import React from 'react';
+import './component.css';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -132,7 +133,9 @@ export default function Dashboard() {
         open={open}
       >
         <DrawerHeader>
-          <div style={{ marginRight: "27%" }}>Overviews</div>
+          <Link style={{ textDecoration: "none" }} to={pageLink[0]}>
+            <div className='overviews'><span>Overviews</span></div>
+          </Link>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
@@ -140,8 +143,7 @@ export default function Dashboard() {
         <Divider />
         <List>
           {sideNav?.map((text, index) => (
-
-            <Link to={pageLink[index + 1]} style={{textDecoration:"none"}}>
+            <Link to={pageLink[index + 1]} style={{ textDecoration: "none" }}>
               <ListItem key={text} disablePadding>
                 <ListItemButton className='Selected'>
                   <ListItemIcon>
