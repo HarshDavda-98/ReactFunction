@@ -1,6 +1,5 @@
 import React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
-import { useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -25,8 +24,8 @@ import MailIcon from '@mui/icons-material/Mail';
 import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
 import PaymentIcon from '@mui/icons-material/Payment';
 import PanToolTwoTone from '@mui/icons-material/PanToolTwoTone';
-import SimpleMap from './googlemap';
 import Routers from './Routers';
+import { useParams, Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -79,9 +78,17 @@ export default function Dashboard() {
   const theme = useTheme();
   const params = useParams();
   console.log(params)
-  const sideNav = ["Google Map Intergration","Signature canvas functionality","Email functionality","Payment Gateway integration","Download","Upi Integration", "DragDrop"]
-  const sideNavIcon=[<LocationOnIcon/>,<BorderColorIcon/>,<MailIcon/>,<PaymentIcon/>,<DownloadForOfflineIcon/>,<PointOfSaleSharpIcon/>,<PanToolTwoTone/>];
-  const sideNavLink = ["/googlemap","/signature-canvas","Email-functionality"];
+  const sideNav = [
+    "Google Map Intergration",
+    "Signature canvas functionality",
+    "Email functionality",
+    "Payment Gateway integration",
+    "Download",
+    "Upi Integration",
+    "DragDrop"
+  ]
+  const sideNavIcon = [<LocationOnIcon />, <BorderColorIcon />, <MailIcon />, <PaymentIcon />, <DownloadForOfflineIcon />, <PointOfSaleSharpIcon />, <PanToolTwoTone />];
+  const pageLink = ["/overview", "/googlemap", "/signature-canvas", "/Email-functionality", "/payment-integration", "/downloadfiles", "/upi-integration", "/drag-and-drop"];
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -107,7 +114,7 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Persistent drawer
+            My Functionality Demo
           </Typography>
         </Toolbar>
       </AppBar>
@@ -125,7 +132,7 @@ export default function Dashboard() {
         open={open}
       >
         <DrawerHeader>
-            <div style={{marginRight:"27%"}}>Hello</div>
+          <div style={{ marginRight: "27%" }}>Overviews</div>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
@@ -133,22 +140,26 @@ export default function Dashboard() {
         <Divider />
         <List>
           {sideNav?.map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton className='Selected'>
-                <ListItemIcon>
-                  {sideNavIcon[index]}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
+
+            <Link to={pageLink[index + 1]} style={{textDecoration:"none"}}>
+              <ListItem key={text} disablePadding>
+                <ListItemButton className='Selected'>
+                  <ListItemIcon>
+                    {sideNavIcon[index]}
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            </Link>
+
           ))}
         </List>
-      
+
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
         <Typography paragraph>
-            <Routers/>
+          <Routers />
         </Typography>
       </Main>
     </Box>

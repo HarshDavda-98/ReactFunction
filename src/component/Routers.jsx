@@ -18,7 +18,7 @@ export default function Routers() {
 
   return (
     <div>
-      <BrowserRouter>
+      {/* <BrowserRouter> */}
         <Routes>
           {pageComponent?.map((list,i) => {
             if(i=== 0){
@@ -27,7 +27,7 @@ export default function Routers() {
             return <Route path={pageLink[i]} element={list}></Route>
           }})}
         </Routes>
-      </BrowserRouter>
+      {/* </BrowserRouter> */}
 
     </div>
   )
